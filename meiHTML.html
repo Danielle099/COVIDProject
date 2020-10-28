@@ -1,0 +1,63 @@
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="styles.css">
+  <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+  <script type='text/javascript'>
+  google.charts.load('current', {packages: ['corechart', 'bar']});
+  google.charts.setOnLoadCallback(drawBasic);
+
+function drawBasic() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('timeofday', 'Time of Day');
+      data.addColumn('number', 'Motivation Level');
+
+ 
+       var data = google.visualization.arrayToDataTable([
+          ['County', 'Total Cases In County', 'Lafayette College', 'Lehigh University', 'Moravian College', 'Muhlenberg and Allentown', 'DeSales University', 'Cedar Crest College', 'Pennsylvania State University Lehigh Valley'],
+          ['Carbon', 1000,null,null,null,null,null,null,null],
+          ['Lehigh', 1170, null,null,null,100,50,120,60],
+          ['Northampton', 2000,100,200,150,null,null,null,null],
+          ['Warren', 1030,null,null,null,null,null,null,null]
+          
+        ]);
+
+      var options = {
+        title: "Cases at each college in a county and total cases in the county",
+        width: 900,
+        height: 700,
+        legend: { position: 'top', maxLines: 4 },
+        bar: { groupWidth: '75%' },
+        isStacked: true,
+        /* colors: ['#b2b7ca', '#8496b1','#b2c3de','#dad2e1','#d8bbad','#e5dfc7','#658e9d','#dfcfbb'], */
+        colors: ['#b2b7ca', '#8496b1','#c3a7ad','#dad2e1','#d8bbad','#e5dfc7','#658e9d','#bcd7db'],
+        vAxes: {
+            // Adds titles to each axis.
+            0: {title: 'Number of Covid Cases'},
+            1: {title: 'County'}
+          }
+      };
+
+      var chart = new google.visualization.ColumnChart(
+        document.getElementById('chart_div'));
+
+      chart.draw(data, options);
+    }  
+  </script>
+
+</head>
+
+<body>
+  
+  <div id="chart_div"></div>
+</body>
+</html>
