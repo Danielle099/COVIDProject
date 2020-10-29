@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- Theme Made By www.w3schools.com -->
-  <title>Bootstrap Theme Company Page</title>
+  <title>Covid Database Project</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -14,27 +14,27 @@
   <script type='text/javascript'>
     google.charts.load('current', {packages: ['corechart', 'bar']});
     google.charts.setOnLoadCallback(drawBasic);
-  
+
   function drawBasic() {
-  
+
         var data = new google.visualization.DataTable();
         data.addColumn('timeofday', 'Time of Day');
         data.addColumn('number', 'Motivation Level');
-  
-   
+
+
          var data = google.visualization.arrayToDataTable([
             ['County', 'Total Cases In County', 'Lafayette College', 'Lehigh University', 'Moravian College', 'Muhlenberg and Allentown', 'DeSales University', 'Cedar Crest College', 'Pennsylvania State University Lehigh Valley'],
             ['Carbon', 1000,null,null,null,null,null,null,null],
             ['Lehigh', 1170, null,null,null,100,50,120,60],
             ['Northampton', 2000,100,200,150,null,null,null,null],
             ['Warren', 1030,null,null,null,null,null,null,null]
-            
+
           ]);
-  
+
         var options = {
           title: "Cases at each college in a county and total cases in the county",
-          width: 1000,
-          height: 700,
+          // width: 1000,
+          // height: 700,
           legend: { position: 'top', maxLines: 4 },
           bar: { groupWidth: '75%' },
           isStacked: true,
@@ -46,12 +46,12 @@
               1: {title: 'County'}
             }
         };
-  
+
         var chart = new google.visualization.ColumnChart(
           document.getElementById('chart_div'));
-  
+
         chart.draw(data, options);
-      }  
+      }
 
       google.charts.load("current", {packages:["corechart"]});
       google.charts.setOnLoadCallback(drawChart);
@@ -86,21 +86,21 @@
 
         function drawRegionsMap() {
             var data = google.visualization.arrayToDataTable([
-			  ['lat', 'lng', 'Name', 'Cases', 'Deaths'],
-			  [40.7503729, -75.6249088, 'Lehigh County', 6496, 365], // <-- 'Kanawha County'
-			  [40.875373, -75.2499025, 'Northhampton County', 5304, 311],
-			  [40.8334321, -74.9496152, 'Warren County', 1562, 171],
-			  [41.1253621, -75.6746349, 'Carbon County', 574, 29]
-			]);
+                          ['lat', 'lng', 'Name', 'Cases', 'Deaths'],
+                          [40.7503729, -75.6249088, 'Lehigh County', 6496, 365], // <-- 'Kanawha County'
+                          [40.875373, -75.2499025, 'Northhampton County', 5304, 311],
+                          [40.8334321, -74.9496152, 'Warren County', 1562, 171],
+                          [41.1253621, -75.6746349, 'Carbon County', 574, 29]
+                        ]);
 
             var options = {
-				region: 'US-PA',
-      			displayMode: 'markers',
-      			resolution: 'metros',
-				colorAxis: {colors: ['#e7711c', '#4374e0']},
-				backgroundColor: {stroke: 'black', strokeWidth: 10, color: 'black'},
-				datalessRegionColor: '#81d4fa',
-			};
+                                region: 'US-PA',
+                        displayMode: 'markers',
+                        resolution: 'metros',
+                                colorAxis: {colors: ['#e7711c', '#4374e0']},
+                                backgroundColor: {stroke: 'black', strokeWidth: 10, color: 'black'},
+                                datalessRegionColor: '#81d4fa',
+                        };
 
             var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
 
@@ -125,7 +125,7 @@
 
     var options = {
         title: 'Incidence of COVID cases',
-        width: 900,
+        // width: 900,
         legend: { position: 'none' },
         chart: { title: 'Incidence of COVID cases',
                 subtitle: 'Cases every 1000' },
@@ -141,6 +141,13 @@
         var chart = new google.charts.Bar(document.getElementById('top_x_div'));
         chart.draw(data, options);
       };
+
+      $(window).resize(function(){
+      drawChart();
+      drawStuff();
+      drawBasic();
+      drawRegionsMap();
+});
     </script>
   <style>
   .overlay {
@@ -150,7 +157,11 @@
              top: 60px;   /* chartArea top  */
              left: 180px; /* chartArea left */
   }
+  .chart {
+  width: 100%;
+  min-height: 450px;
 
+}
   body {
     font: 400 15px Lato, sans-serif;
     line-height: 1.8;
@@ -169,7 +180,7 @@
     color: #303030;
     font-weight: 400;
     margin-bottom: 30px;
-  }  
+  }
   .jumbotron {
     background-color: #a3bbaa;
     color: #fff;
@@ -261,7 +272,7 @@
     0% {
       opacity: 0;
       transform: translateY(70%);
-    } 
+    }
     100% {
       opacity: 1;
       transform: translateY(0%);
@@ -271,7 +282,7 @@
     0% {
       opacity: 0;
       -webkit-transform: translateY(70%);
-    } 
+    }
     100% {
       opacity: 1;
       -webkit-transform: translateY(0%);
@@ -286,13 +297,18 @@
       width: 100%;
       margin-bottom: 35px;
     }
+    .graph {
+      width:20%;
+      height:20%;
+    }
   }
   @media screen and (max-width: 480px) {
     .logo {
       font-size: 150px;
     }
   }
-    
+
+
   </style>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -303,7 +319,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#myPage"><small>SQLadies</small></a>
     </div>
@@ -319,36 +335,32 @@
 </nav>
 
 <div class="jumbotron text-center">
-  <h1>Covid Stats in Lehigh Valley</h1> 
+  <h1>Covid Stats in Lehigh Valley</h1>
 </div>
 
 
-<!-- Container (About Section) -->
+<!-- Container (Map Section) -->
   <div id="map" class="container-fluid text-center">
     <h2>Lehigh Valley Covid Map</h2><br>
-    <div id="regions_div" ></div>
+    <div id="regions_div" class="chart"></div>
   </div>
 
-<!-- Container (Services Section) -->
+<!-- Container (Incidence Section) -->
 <div id="incidence" class="container-fluid text-center">
   <h2>Incidence Graph in Lehigh Valley by county</h2>
-  <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+  <div id="top_x_div" class="chart" ></div>
 </div>
 
-<!-- Container (Portfolio Section) -->
-<div id="column" class="container-fluid text-center bg-grey">
+<!-- Container (Comparison Section) -->
+<div id="column" class="container-fluid text-center">
   <h2>College Covid Comparison Graphs</h2><br>
-  <div class="row">
-    <div class="col-sm-8">
-      <div id="chart_div"></div>
-    </div>
-    </div> 
+      <div id="chart_div"  class="chart" ></div>
 </div>
 
-<!-- Container (Pricing Section) -->
+<!-- Container (Donut Section) -->
 <div id="donut" class="container-fluid text-center">
   <h2>College Covid Donut Graph</h2><br>
-  <div id="donutchart" style="width: 900px; height: 500px;"></div>
+  <div id="donutchart" class="chart"></div>
     <!-- <div class="overlay">
             <div style="color: #b44; font-family:'Arial Black'; font-size: 32px; letter-spacing: .21em; margin-top:2630px; margin-left:325px;">76</div>
     </div> -->
@@ -358,7 +370,10 @@
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
+
   <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
+  <p>Project Members: Danielle Baker, Mei Ting Ieong, Shiho Numakura, Jamie Monteleone</p>
+
 </footer>
 
 <script>
@@ -378,13 +393,13 @@ $(document).ready(function(){
       $('html, body').animate({
         scrollTop: $(hash).offset().top
       }, 900, function(){
-   
+
         // Add hash (#) to URL when done scrolling (default click behavior)
         window.location.hash = hash;
       });
     } // End if
   });
-  
+
   $(window).scroll(function() {
     $(".slideanim").each(function(){
       var pos = $(this).offset().top;
